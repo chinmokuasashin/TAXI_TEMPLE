@@ -1,0 +1,733 @@
+/* 重置樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 黃昏色系變數 */
+:root {
+    --sunset-orange: #FF6B35;
+    --sunset-deep-orange: #F7931E;
+    --sunset-gold: #FFD23F;
+    --sunset-red: #C44536;
+    --sunset-dark: #8B4513;
+    --sunset-light: #FFE5CC;
+    --sunset-gradient: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FFD23F 100%);
+    --sunset-gradient-dark: linear-gradient(135deg, #C44536 0%, #FF6B35 50%, #F7931E 100%);
+}
+
+body {
+    font-family: 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 導航欄 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(198, 69, 54, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 20px;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--sunset-gold);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-menu a:hover {
+    color: var(--sunset-gold);
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--sunset-gold);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+/* 首頁橫幅 */
+.hero {
+    position: relative;
+    height: 40vh;
+    min-height: 350px;
+    background: var(--sunset-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+    background-size: cover;
+    opacity: 0.3;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.hero-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.hero-content h1 {
+    font-size: 7.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease;
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease 0.2s both;
+}
+
+.hero-features {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease 0.4s both;
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.feature-icon {
+    font-size: 3rem;
+}
+
+.feature-item p {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* 社交媒體按鈕 */
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease 0.6s both;
+    margin-top: 1rem;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.2rem 2.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.social-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.social-icon {
+    font-size: 1.5rem;
+}
+
+.line-btn:hover {
+    background: #00C300;
+    border-color: #00C300;
+}
+
+.fb-btn:hover {
+    background: #1877F2;
+    border-color: #1877F2;
+}
+
+.wechat-btn:hover {
+    background: #07C160;
+    border-color: #07C160;
+}
+
+/* 立即預約按鈕 */
+.book-btn {
+    display: inline-block;
+    padding: 1.5rem 4rem;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--sunset-red);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.5rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease 0.6s both;
+    margin-top: 0;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+.book-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    background: white;
+    color: var(--sunset-orange);
+    border-color: var(--sunset-orange);
+}
+
+/* 區塊標題 */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--sunset-red);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--sunset-gradient);
+    border-radius: 2px;
+}
+
+/* 關於我們 */
+.about {
+    padding: 6rem 0;
+    background: linear-gradient(to bottom, #fff 0%, var(--sunset-light) 100%);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+.service-areas {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.service-areas h3 {
+    color: var(--sunset-red);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+/* 價目表 */
+.pricing {
+    padding: 6rem 0;
+    background: var(--sunset-gradient);
+    color: white;
+}
+
+.pricing .section-title {
+    color: white;
+}
+
+.pricing .section-title::after {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.pricing-table-wrapper {
+    margin-bottom: 4rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.pricing-table-wrapper h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: var(--sunset-gold);
+}
+
+.pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-table thead {
+    background: var(--sunset-gradient-dark);
+    color: white;
+}
+
+.pricing-table th {
+    padding: 1.2rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.pricing-table td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.pricing-table tbody tr:hover {
+    background: var(--sunset-light);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+.pricing-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 服務項目 */
+.services {
+    padding: 6rem 0;
+    background: white;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.service-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+    border-color: var(--sunset-orange);
+}
+
+.service-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    color: var(--sunset-red);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.service-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 聯絡我們 */
+.contact {
+    padding: 6rem 0;
+    background: var(--sunset-gradient-dark);
+    color: white;
+}
+
+.contact .section-title {
+    color: white;
+}
+
+.contact .section-title::after {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-info {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.contact-info h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--sunset-gold);
+}
+
+.contact-person {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.contact-phone {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--sunset-gold);
+    font-weight: 600;
+}
+
+.contact-social {
+    margin: 1.5rem 0;
+    line-height: 2;
+}
+
+.contact-social p {
+    font-size: 1.1rem;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-item p {
+    margin-bottom: 0;
+}
+
+.contact-note {
+    margin-top: 1.5rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.contact-btn.line-btn:hover {
+    background: #00C300;
+    border-color: #00C300;
+}
+
+.contact-btn.fb-btn:hover {
+    background: #1877F2;
+    border-color: #1877F2;
+}
+
+.contact-btn.wechat-btn:hover {
+    background: #07C160;
+    border-color: #07C160;
+}
+
+.btn-icon {
+    font-size: 1.5rem;
+}
+
+/* 頁尾 */
+.footer {
+    background: var(--sunset-dark);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* 動畫 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: rgba(198, 69, 54, 0.98);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 2rem 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .hero {
+        height: 35vh;
+        min-height: 300px;
+    }
+
+    .hero-content h1 {
+        font-size: 5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .hero-features {
+        gap: 2rem;
+    }
+
+    .book-btn {
+        font-size: 1.2rem;
+        padding: 1.2rem 3rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .pricing-table {
+        font-size: 0.9rem;
+    }
+
+    .pricing-table th,
+    .pricing-table td {
+        padding: 0.8rem 0.5rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .social-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    .contact-item {
+        margin-bottom: 2rem;
+    }
+
+    .contact-btn {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+        font-size: 0.95rem;
+        padding: 0.7rem 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 30vh;
+        min-height: 280px;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .social-btn {
+        font-size: 1rem;
+        padding: 0.9rem 1.8rem;
+    }
+
+    .book-btn {
+        font-size: 1.1rem;
+        padding: 1rem 2.5rem;
+    }
+
+    .pricing-table-wrapper {
+        padding: 1rem;
+        overflow-x: auto;
+    }
+
+    .pricing-table {
+        min-width: 400px;
+    }
+}
+
+/* 平滑滾動 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 選取文字顏色 */
+::selection {
+    background: var(--sunset-orange);
+    color: white;
+}
+
+
